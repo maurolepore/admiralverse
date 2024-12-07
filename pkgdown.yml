@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   articles/dverse: dverse.html
   articles/reference: reference.html
-last_built: 2024-12-07T22:42Z
+last_built: 2024-12-07T22:44Z
 urls:
   reference: https://maurolepore.github.io/admiralverse/reference
   article: https://maurolepore.github.io/admiralverse/articles
