@@ -16,3 +16,12 @@ Depends:
     admiralophtha,
     admiralpeds,
     admiralvaccine
+URL: https://maurolepore.github.io/admiralverse/, https://github.com/maurolepore/admiralverse
+Config/Needs/website: rmarkdown
+Suggests: 
+    dplyr,
+    dverse,
+    DT
+BugReports: https://github.com/maurolepore/admiralverse/issues
+Remotes:  
+    maurolepore/dverse

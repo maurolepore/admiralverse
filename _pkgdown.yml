@@ -1,0 +1,13 @@
+url: https://maurolepore.github.io/admiralverse/
+template:
+  bootstrap: 5
+  params:
+    bootswatch: flatly
+
+navbar:
+  type: default
+  left:
+  - text: "Reference"
+    href: articles/reference.html
+  - text: "Articles"
+    href: articles/dverse.html
