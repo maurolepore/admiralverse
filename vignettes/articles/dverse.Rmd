@@ -1,5 +1,5 @@
 ---
-title: "Document your universe with dverse"
+title: "Creating a global search"
 editor_options: 
   chunk_output_type: console
 ---
