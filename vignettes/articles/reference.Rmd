@@ -28,7 +28,7 @@ admiralverse <- c(
 template <- "https://pharmaverse.github.io/{package}/reference/{topic}.html"
 docs <- dverse::document_universe(admiralverse, template)
 
-online <- docs |> filter(is_online(topic))
+online <- docs |> filter(dverse::is_online(topic))
 ```
 
 ### Vignettes
