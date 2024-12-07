@@ -1,0 +1,9 @@
+pandoc: 3.1.11
+pkgdown: 2.1.1
+pkgdown_sha: ~
+articles:
+  articles/reference: reference.html
+last_built: 2024-12-07T21:34Z
+urls:
+  reference: https://maurolepore.github.io/admiralverse/reference
+  article: https://maurolepore.github.io/admiralverse/articles
