@@ -1,5 +1,7 @@
+# Spell-checked R Markdown Code
+
 ---
-title: "Creating a global search"
+title: "Creating a Global Search"
 editor_options: 
   chunk_output_type: console
 ---
@@ -14,7 +16,7 @@ knitr::opts_chunk$set(
 ```{r admiralverse}
 #| eval: false
 #| echo: false
-# admiral packages on CRAN with a website
+# Admiral packages on CRAN with a website
 admiralverse <- pak::pkg_search("admiral") |>
   dplyr::filter(grepl("admiral", package)) |>
   dplyr::filter(!is.na(url)) |>
@@ -25,9 +27,9 @@ admiralverse
 This article shows how to create a global search for a collection of
 packages. 
 
-As an example consider the toy 'admiralverse'. You need to use the dverse
+As an example, consider the toy 'admiralverse'. You need to use the dverse
 package, all the packages in the admiralverse, and likely some other packages to
-manipulate the resulting documentation, and to generate click-able links to the
+manipulate the resulting documentation and to generate clickable links to the
 help files.
 
 ```{r setup}
@@ -60,7 +62,7 @@ docs
 ```
 
 You may create a global search with `datatable(docs, escape = FALSE)`, but note
-the `docs` have multiple types of documentation.
+that the `docs` have multiple types of documentation.
 
 ```{r}
 docs |> count(type, keyword)
@@ -81,7 +83,7 @@ vignettes |>
 
 ### Datasets
 
-They may also want to search for datasets.
+You may also want to search for datasets.
 
 ```{r datasets}
 datasets <- docs |> filter(keyword == "datasets")
@@ -106,8 +108,8 @@ public |>
   datatable(escape = FALSE)
 ```
 
-### Learn more
+### Learn More
 
 * [dverse](https://maurolepore.github.io/dverse/index.html).
-* Creating the (toy) 'admiralverse'  meta-package ([5' video](https://youtu.be/ezVpsadSF7A)).
+* Creating the (toy) 'admiralverse' meta-package ([5' video](https://youtu.be/ezVpsadSF7A)).
 * Creating a website for the (toy) 'admiralverse' with a global search ([9' video](https://youtu.be/VhmnADBDXv0)).
