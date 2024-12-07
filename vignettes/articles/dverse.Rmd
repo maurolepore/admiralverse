@@ -27,7 +27,7 @@ admiralverse
 This article shows how to create a global search for a collection of
 packages. 
 
-As an example, consider the toy 'admiralverse'. You need the dverse package, all
+As an example, consider the toy admiralverse. You need the dverse package, all
 the packages in the admiralverse, and some other packages to manipulate the
 output of dverse and to create clickable and searchable tables.
 
