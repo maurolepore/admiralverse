@@ -127,9 +127,9 @@ datasets |>
 ### Functions
 
 ```{r internals}
-internal <- docs |> filter(keyword == "internal")
+internal <- online |> filter(keyword == "internal")
 
-public <- docs |>
+public <- online |>
   anti_join(vignettes) |>
   anti_join(datasets) |>
   anti_join(internal)
