@@ -16,7 +16,7 @@ i.e. a universe. Your universe may be large and popular like the
 [Tidyverse](https://tidyverse.org/) or [Pharmaverse](https://pharmaverse.org/).
 But it may also be small, company-specific or personal, and not on CRAN.
 
-The example here uses a toy universe  called *admiralverse* -- defined as every
+The example here uses a toy universe called *admiralverse* -- defined as every
 package on CRAN today (2024-08-12) which name starts with "admiral" and has a
 website.
 
