@@ -11,9 +11,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-This article shows how to create a global search for a collection of R packages.
-As an example consider the toy admiralverse -- defined as every package on CRAN
-today (2024-08-12) which name starts with "admiral" and has a website.
+This article shows how to create a global search for a collection of R packages,
+i.e. a universe. Your universe may be large and popular like the
+[Tidyverse](https://tidyverse.org/) or [Pharmaverse](https://pharmaverse.org/),
+but it can also be small, company-specific or personal, and not on CRAN.
+
+The example here uses a toy universe  called *admiralverse* -- defined as every
+package on CRAN today (2024-08-12) which name starts with "admiral" and has a
+website.
 
 ```{r admiralverse}
 #| eval: false
@@ -44,8 +49,24 @@ library(dplyr)
 library(DT)
 ```
 
-`dverse::document_universe()` takes the names of the packages in the admiralverse, and a
-URL template pointing to each topic in each package.
+<details><summary>Versions</summary>
+
+```{r versions}
+packageVersion("dverse")
+packageVersion("admiral")
+packageVersion("admiraldev")
+packageVersion("admiralonco")
+packageVersion("admiralophtha")
+packageVersion("admiralpeds")
+packageVersion("admiralvaccine")
+packageVersion("dplyr")
+packageVersion("DT")
+```
+
+</details>
+
+`dverse::document_universe()` takes the names of the packages in the
+admiralverse, and a URL template pointing to each topic in each package.
 
 ```{r docs}
 admiralverse <- c(
@@ -119,6 +140,11 @@ public |>
 ```
 
 ### Learn More
+
+If this sounds useful you may explore the source code of the toy
+[admiralverse](https://maurolepore.github.io/admiralverse) meta-package, which
+models the main use case of [dverse](https://maurolepore.github.io/dverse/), or
+watch the related videos on YouTube:
 
 * Creating a meta-package for the toy 'admiralverse' ([5' video](https://youtu.be/ezVpsadSF7A)).
 * Creating a website for the toy 'admiralverse' ([9' video](https://youtu.be/VhmnADBDXv0)).
