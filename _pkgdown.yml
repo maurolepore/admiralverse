@@ -9,3 +9,7 @@ navbar:
   left:
   - text: "Reference"
     href: articles/reference.html
+  - text: "Articles"
+    menu:
+    - text: "Creating a Global Search"
+      href: articles/search.html

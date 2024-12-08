@@ -1,14 +1,14 @@
 Package: admiralverse
-Title: What the Package Does (One Line, Title Case)
+Title: Demonstrates a Universe Meta Package
 Version: 0.0.0.9000
 Authors@R: 
     person("Mauro", "Lepore", , "maurolepore@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "https://orcid.org/0000-0002-1986-7988"))
-Description: What the package does (one paragraph).
+Description: Demonstrates a universe meta package.
 License: MIT + file LICENSE
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+URL: https://maurolepore.github.io/admiralverse/,
+    https://github.com/maurolepore/admiralverse
+BugReports: https://github.com/maurolepore/admiralverse/issues
 Depends: 
     admiral,
     admiraldev,
@@ -16,12 +16,12 @@ Depends:
     admiralophtha,
     admiralpeds,
     admiralvaccine
-URL: https://maurolepore.github.io/admiralverse/, https://github.com/maurolepore/admiralverse
-Config/Needs/website: rmarkdown
 Suggests: 
     dplyr,
-    dverse,
-    DT
-BugReports: https://github.com/maurolepore/admiralverse/issues
-Remotes:  
-    maurolepore/dverse
+    DT,
+    dverse
+Config/Needs/website: rmarkdown
+Encoding: UTF-8
+Language: en-US
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
