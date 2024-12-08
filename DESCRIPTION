@@ -19,7 +19,8 @@ Depends:
 Suggests: 
     dplyr,
     DT,
-    dverse (>= 0.2.0)
+    dverse (>= 0.2.0),
+    link
 Config/Needs/website: rmarkdown
 Encoding: UTF-8
 Language: en-US
