@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Creating a Global Search • admiralverse</title>
+<title>Creating a better universe • admiralverse</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Creating a Global Search">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Creating a better universe">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -30,12 +30,6 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="../articles/reference.html">Reference</a></li>
-<li class="active nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/search.html">Creating a Global Search</a></li>
-  </ul>
-</li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -51,7 +45,8 @@
 
 
 
-<link href="search_files/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="search_files/bslib-component-js-0.8.0/components.min.js"></script><script src="search_files/bslib-component-js-0.8.0/web-components.min.js" type="module"></script><link href="search_files/bslib-component-css-0.8.0/components.css" rel="stylesheet">
+<script src="search_files/bslib-tag-require-0.8.0/tag-require.js"></script><link href="search_files/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
 <script src="search_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="search_files/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
 <script src="search_files/datatables-binding-0.33/datatables.js"></script><link href="search_files/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="search_files/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
@@ -59,7 +54,7 @@
 <script src="search_files/crosstalk-1.2.1/js/crosstalk.min.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>Creating a Global Search</h1>
+      <h1>Creating a better universe</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/maurolepore/admiralverse/blob/main/vignettes/articles/search.Rmd" class="external-link"><code>vignettes/articles/search.Rmd</code></a></small>
@@ -68,24 +63,33 @@
 
     
     
-<p>This article shows how to create a global search for a collection of
-R packages, i.e. a universe. Your universe may be large and popular like
-the <a href="https://tidyverse.org/" class="external-link">Tidyverse</a> or <a href="https://pharmaverse.org/" class="external-link">Pharmaverse</a>. But it may also be
-small, company-specific or personal, and not on CRAN.</p>
-<p>The example here uses a toy universe called <em>admiralverse</em> –
-defined as every package on CRAN today (2024-08-12) which name starts
-with “admiral” and has a website.</p>
+<p><strong>How to create a global search across an entire collection of
+R packages: A use case for the toy ‘admiralverse’</strong></p>
+<hr>
+<p>This article shows how to create a global search for any collection
+of R packages, i.e. a universe. Your universe may be on CRAN, large, and
+popular like the <a href="https://tidyverse.org/" class="external-link">tidyverse</a> or <a href="https://pharmaverse.org/" class="external-link">pharmaverse</a>. But it may also be not
+on CRAN, small, company-specific or personal.</p>
+<p>The example here uses the ‘admiralverse’ – a toy universe defined as
+every package on CRAN today (2024-12-07), with a website, and a name
+starting with ‘admiral’.</p>
 <p>You need:</p>
 <ul>
-<li>the <a href="https://maurolepore.github.io/dverse/" class="external-link">dverse</a>
-package,</li>
-<li>each package in the admiralverse (see <a href="https://pharmaverse.org/" class="external-link uri">https://pharmaverse.org/</a>),</li>
+<li>the
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()"><template>GitHub - maurolepore/dverse: Document a Universe of
+Packages</template><a href="https://github.com/maurolepore/dverse" class="external-link r-link-pkg" target="_blank">{dverse}</a>
+</bslib-tooltip> package,</li>
+<li>each package in the toy ‘admiralverse’,</li>
 <li>
-<a href="https://dplyr.tidyverse.org/" class="external-link">dplyr</a> to manipulate the
-output of dverse, and</li>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()"><template>A Grammar of Data Manipulation • dplyr</template><a href="https://dplyr.tidyverse.org" class="external-link r-link-pkg" target="_blank">{dplyr}</a>
+</bslib-tooltip> to manipulate the output of
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()"><template>GitHub - maurolepore/dverse: Document a Universe of
+Packages</template><a href="https://github.com/maurolepore/dverse" class="external-link r-link-pkg" target="_blank">{dverse}</a>
+</bslib-tooltip>, and</li>
 <li>
-<a href="https://rstudio.github.io/DT/" class="external-link">DT</a> to create a
-searchable table.</li>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()"><template>GitHub - rstudio/DT: R Interface to the jQuery Plug-in
+DataTables</template><a href="https://github.com/rstudio/DT" class="external-link r-link-pkg" target="_blank">{DT}</a>
+</bslib-tooltip> to create a searchable table.</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/maurolepore/dverse" class="external-link">dverse</a></span><span class="op">)</span></span>
@@ -118,9 +122,10 @@ Versions
 <span><span class="co">#&gt; [1] '1.1.4'</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html" class="external-link">packageVersion</a></span><span class="op">(</span><span class="st">"DT"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] '0.33'</span></span></code></pre></div>
-</details><p><code><a href="https://maurolepore.github.io/dverse/reference/document_universe.html" class="external-link">dverse::document_universe()</a></code> takes the names of the
-packages in the admiralverse, and a template pointing to each help file
-(topic) in each package.</p>
+</details><p><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()"><template>Create a data frame with documentation metadata of one or more
+packages — document_universe • dverse</template><a href="https://maurolepore.github.io/dverse/reference/document_universe.html" class="external-link r-link-call" target="_blank">dverse::document_universe()</a>
+</bslib-tooltip> takes the names of the packages in the ‘admiralverse’,
+and a template pointing to each help file (topic) in each package.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">admiralverse</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>  <span class="st">"admiral"</span>,</span>
@@ -151,7 +156,9 @@ packages in the admiralverse, and a template pointing to each help file
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 334 more rows</span></span></span></code></pre></div>
 <p>You may need to exclude some topics, such as reexported objects from
 other packages. Because topics outside your universe yield broken links,
-you can exclude them with <code><a href="https://maurolepore.github.io/dverse/reference/is_online.html" class="external-link">dverse::is_online()</a></code>.</p>
+you can exclude them with
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()"><template>Is each URL (or href) online? — is_online • dverse</template><a href="https://maurolepore.github.io/dverse/reference/is_online.html" class="external-link r-link-call" target="_blank">dverse::is_online()</a>
+</bslib-tooltip>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">docs</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu">dverse</span><span class="fu">::</span><span class="fu"><a href="https://maurolepore.github.io/dverse/reference/is_online.html" class="external-link">is_online</a></span><span class="op">(</span><span class="va">topic</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 × 7</span></span></span>
@@ -225,13 +232,20 @@ functions.</p>
 <div class="section level3">
 <h3 id="learn-more">Learn More<a class="anchor" aria-label="anchor" href="#learn-more"></a>
 </h3>
-<p>If this sounds useful, see the toy <a href="https://maurolepore.github.io/admiralverse">admiralverse</a>
-meta-package – which models the main use case of <a href="https://maurolepore.github.io/dverse/" class="external-link">dverse</a> – or the related
-videos:</p>
+<p>To learn more see the toy ‘admiralverse’ <a href="https://maurolepore.github.io/admiralverse">meta-package</a> –
+which models the main use case of
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()"><template>GitHub - maurolepore/dverse: Document a Universe of
+Packages</template><a href="https://github.com/maurolepore/dverse" class="external-link r-link-pkg" target="_blank">{dverse}</a>
+</bslib-tooltip>.</p>
+<p>You may also enjoy these videos:</p>
 <ul>
-<li>Creating a meta-package for the toy ‘admiralverse’ (<a href="https://youtu.be/ezVpsadSF7A" class="external-link">5’ video</a>).</li>
-<li>Creating a website for the toy ‘admiralverse’ (<a href="https://youtu.be/VhmnADBDXv0" class="external-link">9’ video</a>).</li>
+<li>Creating a meta-package for the toy ‘admiralverse’ (<a href="https://youtu.be/ezVpsadSF7A" class="external-link">5’</a>).</li>
+<li>Creating a website for the toy ‘admiralverse’ (<a href="https://youtu.be/VhmnADBDXv0" class="external-link">9’</a>).</li>
 </ul>
+<p>Was this useful? Do you want to <a href="https://github.com/maurolepore/dverse/issues" class="external-link">report bugs, propose
+changes or request features</a>.</p>
+<p><a href="https://www.linkedin.com/in/mauro-lepore/" class="external-link">Let’s
+connect</a>.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

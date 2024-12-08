@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   articles/reference: reference.html
   articles/search: search.html
-last_built: 2024-12-08T15:22Z
+last_built: 2024-12-08T17:48Z
 urls:
   reference: https://maurolepore.github.io/admiralverse/reference
   article: https://maurolepore.github.io/admiralverse/articles
