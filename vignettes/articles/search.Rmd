@@ -1,0 +1,149 @@
+---
+title: "Creating a Global Search"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This article shows how to create a global search for a collection of R packages,
+i.e. a universe. Your universe may be large and popular like the
+[Tidyverse](https://tidyverse.org/) or [Pharmaverse](https://pharmaverse.org/).
+But it may also be small, company-specific or personal, and not on CRAN.
+
+The example here uses a toy universe called *admiralverse* -- defined as every
+package on CRAN today (2024-08-12) which name starts with "admiral" and has a
+website.
+
+```{r admiralverse}
+#| eval: false
+#| echo: false
+# Admiral packages on CRAN with a website
+pak::pkg_search("admiral") |>
+  dplyr::filter(grepl("admiral", package)) |>
+  dplyr::filter(!is.na(url)) |>
+  dplyr::pull(package)
+```
+
+You need:
+
+* the [dverse](https://maurolepore.github.io/dverse/) package, 
+* each package in the admiralverse (see https://pharmaverse.org/),
+* [dplyr](https://dplyr.tidyverse.org/) to manipulate the output of dverse, and 
+* [DT](https://rstudio.github.io/DT/) to create a searchable table.
+
+```{r setup}
+library(dverse)
+library(admiral)
+library(admiraldev)
+library(admiralonco)
+library(admiralophtha)
+library(admiralpeds)
+library(admiralvaccine)
+library(dplyr)
+library(DT)
+```
+
+<details><summary>Versions</summary>
+
+```{r versions}
+packageVersion("dverse")
+packageVersion("admiral")
+packageVersion("admiraldev")
+packageVersion("admiralonco")
+packageVersion("admiralophtha")
+packageVersion("admiralpeds")
+packageVersion("admiralvaccine")
+packageVersion("dplyr")
+packageVersion("DT")
+```
+
+</details>
+
+`dverse::document_universe()` takes the names of the packages in the
+admiralverse, and a template pointing to each help file (topic) in each package.
+
+```{r docs}
+admiralverse <- c(
+  "admiral",
+  "admiraldev",
+  "admiralonco",
+  "admiralophtha",
+  "admiralpeds",
+  "admiralvaccine"
+)
+# For example: https://pharmaverse.github.io/admiral/reference/queries.html
+template <- "https://pharmaverse.github.io/{package}/reference/{topic}.html"
+
+docs <- dverse::document_universe(admiralverse, template)
+docs
+```
+
+You may need to exclude some topics, such as reexported objects from other
+packages. Because topics outside your universe yield broken links, you can
+exclude them with `dverse::is_online()`.
+
+```{r online}
+docs |> filter(!dverse::is_online(topic))
+
+online <- docs |> filter(dverse::is_online(topic))
+```
+
+Consider the different kinds of documentation in your universe.
+
+```{r kinds}
+online |> count(type, keyword)
+```
+
+Here it makes sense to separate vignettes, datasets, and public functions.
+
+### Vignettes
+
+```{r vignettes}
+vignettes <- online |> filter(type == "vignette")
+
+vignettes |>
+  distinct(topic, title, package) |>
+  datatable(escape = FALSE)
+```
+
+### Datasets
+
+You may also want to search for datasets.
+
+```{r datasets}
+datasets <- online |> filter(keyword == "datasets")
+
+datasets |>
+  distinct(topic, title, package) |>
+  datatable(escape = FALSE)
+```
+
+### Functions
+
+```{r internals}
+internal <- online |> filter(keyword == "internal")
+
+public <- online |>
+  anti_join(vignettes) |>
+  anti_join(datasets) |>
+  anti_join(internal)
+
+public |>
+  distinct(topic, title, package) |>
+  datatable(escape = FALSE)
+```
+
+### Learn More
+
+If this sounds useful, see the toy
+[admiralverse](https://maurolepore.github.io/admiralverse) meta-package -- which
+models the main use case of [dverse](https://maurolepore.github.io/dverse/) --
+or the related videos:
+
+* Creating a meta-package for the toy 'admiralverse' ([5' video](https://youtu.be/ezVpsadSF7A)).
+* Creating a website for the toy 'admiralverse' ([9' video](https://youtu.be/VhmnADBDXv0)).
