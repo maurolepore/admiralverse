@@ -141,10 +141,10 @@ public |>
 
 ### Learn More
 
-If this sounds useful you may explore the source code of the toy
-[admiralverse](https://maurolepore.github.io/admiralverse) meta-package, which
-models the main use case of [dverse](https://maurolepore.github.io/dverse/), or
-watch the related videos on YouTube:
+If this sounds useful, see the toy
+[admiralverse](https://maurolepore.github.io/admiralverse) meta-package -- which
+models the main use case of [dverse](https://maurolepore.github.io/dverse/) --
+or the related videos:
 
 * Creating a meta-package for the toy 'admiralverse' ([5' video](https://youtu.be/ezVpsadSF7A)).
 * Creating a website for the toy 'admiralverse' ([9' video](https://youtu.be/VhmnADBDXv0)).
