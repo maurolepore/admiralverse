@@ -4,7 +4,6 @@ title: "Creating a Global Search"
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  cache = TRUE,
   message = FALSE,
   collapse = TRUE,
   comment = "#>"
