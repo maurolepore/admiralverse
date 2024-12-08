@@ -13,8 +13,8 @@ knitr::opts_chunk$set(
 
 This article shows how to create a global search for a collection of R packages,
 i.e. a universe. Your universe may be large and popular like the
-[Tidyverse](https://tidyverse.org/) or [Pharmaverse](https://pharmaverse.org/),
-but it can also be small, company-specific or personal, and not on CRAN.
+[Tidyverse](https://tidyverse.org/) or [Pharmaverse](https://pharmaverse.org/).
+But it may also be small, company-specific or personal, and not on CRAN.
 
 The example here uses a toy universe  called *admiralverse* -- defined as every
 package on CRAN today (2024-08-12) which name starts with "admiral" and has a
@@ -66,7 +66,7 @@ packageVersion("DT")
 </details>
 
 `dverse::document_universe()` takes the names of the packages in the
-admiralverse, and a URL template pointing to each topic in each package.
+admiralverse, and a template pointing to each help file (topic) in each package.
 
 ```{r docs}
 admiralverse <- c(
@@ -94,13 +94,13 @@ docs |> filter(!dverse::is_online(topic))
 online <- docs |> filter(dverse::is_online(topic))
 ```
 
-Before creating a single documentation table, consider the different kinds.
+Consider the different kinds of documentation in your universe.
 
 ```{r kinds}
 online |> count(type, keyword)
 ```
 
-Here it makes sense to group vignettes, datasets, and public functions.
+Here it makes sense to separate vignettes, datasets, and public functions.
 
 ### Vignettes
 
