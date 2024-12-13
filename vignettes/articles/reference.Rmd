@@ -33,19 +33,42 @@ online <- docs |> filter(dverse::is_online(topic))
 
 ### Vignettes
 
-```{r}
-vignettes <- online |>
-  filter(type == "vignette") |>
-  select(topic, title, package)
+Here are all the vignettes available across packages in the 'admiralverse'.
+Click on each topic to read its corresponding vignette.
 
-vignettes |> datatable(escape = FALSE)
+```{r vignettes}
+vignettes <- online |> filter(type == "vignette")
+
+vignettes |>
+  distinct(topic, title, package) |>
+  datatable(escape = FALSE)
 ```
 
-### Everything else
+### Datasets
 
-```{r}
-online |>
+Here are all the datasets. Click on each topic to read about it.
+
+```{r datasets}
+datasets <- online |> filter(keyword == "datasets")
+
+datasets |>
+  distinct(topic, title, package) |>
+  datatable(escape = FALSE)
+```
+
+### Functions
+
+Here are all the functions. Click on each topic to read about it.
+
+```{r public}
+internal <- online |> filter(keyword == "internal")
+
+public <- online |>
   anti_join(vignettes) |>
-  select(topic, title, package) |>
+  anti_join(datasets) |>
+  anti_join(internal)
+
+public |>
+  distinct(topic, title, package) |>
   datatable(escape = FALSE)
 ```
