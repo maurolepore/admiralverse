@@ -46,8 +46,6 @@ vignettes |>
 
 ### Datasets
 
-Here are all the datasets. Click on each topic to read about it.
-
 ```{r datasets}
 datasets <- online |> filter(keyword == "datasets")
 
@@ -57,8 +55,6 @@ datasets |>
 ```
 
 ### Functions
-
-Here are all the functions. Click on each topic to read about it.
 
 ```{r public}
 internal <- online |> filter(keyword == "internal")

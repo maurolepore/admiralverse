@@ -1,8 +1,6 @@
-url: https://maurolepore.github.io/admiralverse/
+url: ~
 template:
   bootstrap: 5
-  params:
-    bootswatch: flatly
 
 navbar:
   type: default
